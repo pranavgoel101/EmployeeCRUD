@@ -1,1 +1,7 @@
-<p>registration-form works!</p>
+<form [formGroup]="registrationForm">
+  Enter User Name: <input formControlName="userName" type="text"><br>
+  Enter passWord: <input formControlName= "passWord" type="password"><br>
+  Confirm Password: <input formControlName= "ConfirmpassWord" type="password"><br>
+  <small *ngIf="passcheck"> Password not match</small>
+  <button (click)="registration()">Register</button>
+</form>
