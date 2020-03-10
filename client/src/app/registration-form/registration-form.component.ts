@@ -11,17 +11,25 @@ export class RegistrationFormComponent implements OnInit {
 
   registrationForm: FormGroup;
   passcheck = false;
-
+  fname = ''
+  lname = ''
+  phone = ''
+  address = ''
+  email = ''
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+
     ) { }
+
 
   ngOnInit() {
     this.registrationForm = this.fb.group({
-      userName: ['', Validators.required],
-      passWord: ['', Validators.required],
-      ConfirmpassWord: ['',Validators.required]
+      fname: ['', Validators.required],
+      lname: ['', Validators.required],
+      phone: ['',Validators.required],
+      address: ['',Validators.required],
+      email: ['',Validators.required]
     });
   }
   isPassMatch(){
@@ -38,10 +46,13 @@ export class RegistrationFormComponent implements OnInit {
   }
     registration() {
 
-      if(this.isPassMatch()){
+      //if(this.isPassMatch()){
       const data = {
-        userName: this.registrationForm.get('userName').value,
-        passWord: this.registrationForm.get('passWord').value
+        fname: this.registrationForm.get('fname').value,
+        lname: this.registrationForm.get('lname').value,
+        phone: this.registrationForm.get('phone').value,
+        address: this.registrationForm.get('address').value,
+        email: this.registrationForm.get('email').value,
       };
       console.log('data',data)
 
@@ -56,7 +67,7 @@ export class RegistrationFormComponent implements OnInit {
         alert('Registration Failed');
 
       });
-    }
+    //}
   }
   }
 

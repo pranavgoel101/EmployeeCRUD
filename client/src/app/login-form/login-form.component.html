@@ -1,5 +1,7 @@
 <form [formGroup]="loginForm">
   Enter User Name: <input formControlName="userName" type="text"><br>
   Enter passWord: <input formControlName= "passWord" type="text"><br>
-  <button (click)="login()">Login</button>
+  <button (click)="login()">Login</button><br>
+  <a href [routerLink]="['/registration']">Don't have account? Register</a><br>
+  <a href [routerLink]="['/forgetpassword']">Forgot Password?</a>
 </form>

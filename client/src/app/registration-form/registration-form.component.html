@@ -1,7 +1,15 @@
 <form [formGroup]="registrationForm">
-  Enter User Name: <input formControlName="userName" type="text"><br>
-  Enter passWord: <input formControlName= "passWord" type="password"><br>
-  Confirm Password: <input formControlName= "ConfirmpassWord" type="password"><br>
-  <small *ngIf="passcheck"> Password not match</small>
-  <button (click)="registration()">Register</button>
+  <pre>
+    <div >
+      <h1>REGISTRATION FORM</h1>
+      First Name   : <input type="text" formControlName="fname"><br>
+      Last Name    : <input type="text" formControlName="lname"><br>
+      Phone Number : <input type="tel" formControlName="phone"><br>
+      Address      : <input type="text" formControlName="address"><br>
+      Email ID     : <input type="text" formControlName="email"><br>
+      <button (click)="registration()">Register </button>
+      <a href [routerLink]="['/login']">Already have account? Login</a><br>
+
+    </div>
+  </pre>
 </form>
