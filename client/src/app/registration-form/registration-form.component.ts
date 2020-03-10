@@ -11,11 +11,11 @@ export class RegistrationFormComponent implements OnInit {
 
   registrationForm: FormGroup;
   passcheck = false;
-  fname = ''
-  lname = ''
-  phone = ''
-  address = ''
-  email = ''
+  fname = '';
+  lname = '';
+  phone = '';
+  address = '';
+  email = '';
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
@@ -27,21 +27,21 @@ export class RegistrationFormComponent implements OnInit {
     this.registrationForm = this.fb.group({
       fname: ['', Validators.required],
       lname: ['', Validators.required],
-      phone: ['',Validators.required],
-      address: ['',Validators.required],
-      email: ['',Validators.required]
+      phone: ['', Validators.required],
+      address: ['', Validators.required],
+      email: ['', Validators.required],
+      pass: ['', Validators.required],
     });
   }
-  isPassMatch(){
-  if (this.registrationForm.get('passWord').value == this.registrationForm.get('ConfirmpassWord').value) {
+  isPassMatch() {
+  if (this.registrationForm.get('passWord').value === this.registrationForm.get('ConfirmpassWord').value) {
     return true;
   } else {
     this.passcheck = true;
     return false;
   }
   }
-  clearerror()
-  {
+  clearerror() {
     this.passcheck = true;
   }
     registration() {
@@ -53,8 +53,9 @@ export class RegistrationFormComponent implements OnInit {
         phone: this.registrationForm.get('phone').value,
         address: this.registrationForm.get('address').value,
         email: this.registrationForm.get('email').value,
+        pass : this.registrationForm.get('pass').value,
       };
-      console.log('data',data)
+      console.log('data', data );
 
       this.http.post('http://localhost:3000/user/signup', data).subscribe((response: any) => {
 

@@ -18,15 +18,15 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      userName: ['', Validators.required],
-      passWord: ['', Validators.required]
+      email: ['', Validators.required],
+      pass: ['', Validators.required]
     });
   }
 
   login() {
     const data = {
-      userName: this.loginForm.get('userName').value,
-      passWord: this.loginForm.get('passWord').value
+      email: this.loginForm.get('email').value,
+      pass: this.loginForm.get('pass').value
     };
 
     this.http.post('http://localhost:3000/user/login', data).subscribe((response: any) => {

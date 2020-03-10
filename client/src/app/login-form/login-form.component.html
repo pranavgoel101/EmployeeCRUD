@@ -1,6 +1,6 @@
 <form [formGroup]="loginForm">
-  Enter User Name: <input formControlName="userName" type="text"><br>
-  Enter passWord: <input formControlName= "passWord" type="text"><br>
+  Enter Email: <input formControlName="email" type="text"><br>
+  Enter pass: <input formControlName= "pass" type="text"><br>
   <button (click)="login()">Login</button><br>
   <a href [routerLink]="['/registration']">Don't have account? Register</a><br>
   <a href [routerLink]="['/forgetpassword']">Forgot Password?</a>

@@ -6,7 +6,8 @@ const userSchema = mongoose.Schema({
     lname: { type: String, required: true },
     phone: { type: String, required: true },
     address: { type: String, required: true },
-    email: { type: String, required: true }
+    email: { type: String, required: true },
+    pass: { type: String, required : true},
 });
 
 module.exports = mongoose.model('User1', userSchema);
