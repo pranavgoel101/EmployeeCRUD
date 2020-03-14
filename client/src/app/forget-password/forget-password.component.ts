@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class ForgetPasswordComponent implements OnInit {
   forgetpassword : FormGroup;
   email = ''
+  pass = ''
+  conpass = ''
   constructor(
     private fb: FormBuilder,
     private http: HttpClient
@@ -16,12 +18,15 @@ export class ForgetPasswordComponent implements OnInit {
 
   ngOnInit() {
     this.forgetpassword = this.fb.group({
-      email: ['', Validators.required]
+      email: ['', Validators.required],
+      pass: ['', Validators.required],
+      conpass: ['', Validators.required]
   });
   }
   forgetpass() {
     const data = {
       email: this.forgetpassword.get('email').value,
+      pass: this.forgetpassword.get('pass').value,
       };
 
     this.http.post('http://localhost:3000/user/forgetpassword', data).subscribe((response: any) => {

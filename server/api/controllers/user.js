@@ -60,6 +60,26 @@ exports.user_delete = (req, res, next) => {
 
 };
 
-exports.user_forgetpassword = (req, res, next) => {
+exports.user_forgetpassword = async (req, res, next) => {
+  
+  const user = await User.findOne({email : req.body.email});
+
+  if(!user){
+    return res.status(404).json({
+      msg: 'User not found'
+    });
+  }
+  const user1 = await User.update({email : req.body.email},{pass : req.body.pass});
+  if(!user1){
+    return res.status(404).json({
+      msg: 'password reset unsuccessful'
+    });
+  }
+  else{
+    return res.status(201).json({
+      msg: 'password reset successful'
+    });
+  }
+  
   res.status(200).json({ msg: "forget_password works" })
 };

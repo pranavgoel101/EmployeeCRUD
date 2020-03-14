@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration-form',
@@ -19,7 +20,7 @@ export class RegistrationFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-
+    private router : Router
     ) { }
 
 
@@ -61,7 +62,7 @@ export class RegistrationFormComponent implements OnInit {
 
         console.log(response);
         alert('Registration Successful');
-
+        this.router.navigate(['/login'])
       }, (error) => {
 
         console.log(error);
@@ -71,5 +72,4 @@ export class RegistrationFormComponent implements OnInit {
     //}
   }
   }
-
 

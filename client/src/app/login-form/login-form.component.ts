@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -13,7 +14,8 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private router : Router
   ) { }
 
   ngOnInit() {
@@ -33,7 +35,7 @@ export class LoginFormComponent implements OnInit {
 
       console.log(response);
       alert('Login Successful');
-
+      this.router.navigate(['/homepage'])
     }, (error) => {
 
       console.log(error);
