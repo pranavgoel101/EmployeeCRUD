@@ -32,36 +32,57 @@ exports.Student_signup = async(req, res, next) => {
   
 };
 
-
-exports.Student_delete = (req, res, next) => {
-  res.status(200).json({ msg: "user_delete works" })
-
-};
-
-exports.Student_forgetpassword = async (req, res, next) => {
+exports.Student_display = async (req, res, next) => {
   
-  const user = await User.findOne({email : req.body.email});
+  const student = await Student.find({ });
 
-  if(!user){
+  if(!student) {
     return res.status(404).json({
-      msg: 'User not found'
+      msg: "Can not Display Students"
     });
   }
-  const user1 = await User.update({email : req.body.email},{pass : req.body.pass});
-  if(!user1){
-    return res.status(404).json({
-      msg: 'password reset unsuccessful'
-    });
-  }
-  else{
+  else {
     return res.status(201).json({
-      msg: 'password reset successful'
+      msg: "Display Students Done",
+      student: student
     });
   }
-  
-  res.status(200).json({ msg: "forget_password works" })
 };
-exports.user_homepage = (req, res, next) => {
-  res.status(200).json({ msg: "user_homepage works" })
 
+
+exports.Student_delete = async (req, res, next) => {
+  res.status(200).json({ msg: "user_delete works" })
+  
+    const id=req.params.id;
+  
+    const student = await Student.deleteOne({_id:id });
+  
+    if(!student) {
+      return res.status(404).json({
+        msg: "Student not deleted"
+      });
+    }
+    else {
+      return res.status(201).json({
+        msg: "Student deleted"
+      });
+    }
+  
+
+};
+
+exports.Student_update = async (req, res, next) => {
+  
+  const studentUpdate = await Student.update({_id:req.body.id },{firstname:req.body.firstname , lastname:req.body.lastname , mobileno:req.body.mobileno ,email:req.body.email, username:req.body.username});
+
+  if(!studentUpdate) {
+    return res.status(404).json({
+      msg: "Student not Updated"
+    });
+  }
+  else {
+    return res.status(201).json({
+      msg: "Student Updated"
+    });
+  }
 };

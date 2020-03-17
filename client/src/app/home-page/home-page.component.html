@@ -1,5 +1,34 @@
 Welcome
 <form [formGroup]="homepageForm">
   <button (click)="addstudent()">Add Student</button><br>
+  <div id="heading">
+  <table border="2">
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Mobile no</th>
+      <th>Address</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Update Info</th>
+      <th>Delete Info</th>
+    </tr>
+  </table>
+  </div>
+  <div *ngFor="let item of studentlist">
+    <table border="2">
+    <tr>
+      <td>{{item.fname}}</td>
+      <td>{{item.lname}}</td>
+      <td>{{item.phone}}</td>
+      <td>{{item.address}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.pass}}</td>
+      <td><button (click)="update(item._id)" style="background: lightpink; width: 200px;" >Update</button></td>
+      <td><button (click)="delete(item._id)" style="background: lightyellow; width: 200px;" >Delete</button></td>
+    </tr>
+  </table>
+</div>
 </form>
+
 

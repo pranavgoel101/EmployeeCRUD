@@ -12,17 +12,42 @@ export class HomePageComponent implements OnInit {
 
 
   homepageForm: FormGroup;
-
+  studentlist = [];
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
     private router : Router
     ) { }
 
+    addstudent() {
+      this.router.navigate(['/add-student'])
+    }
   ngOnInit() {
-  }
-  addstudent() {
-    this.router.navigate(['/add-student'])
+    this.http.get('http://localhost:3000/student/displayall').subscribe((response: any) => {
+      this.studentlist = response.student;
+    }, (error) => {
+
+      console.log(error);
+      alert(error.error.msg);
+
+    });
   }
 
-}
+  delete(id) {
+    this.http.delete(`http://localhost:3000/student/studentDelete/${id}`).subscribe((response: any) => {
+      alert(response.msg);
+      this.router.navigate(['/homepage']);
+    }, (error) => {
+
+      console.log(error);
+      alert(error.error.msg);
+
+    });
+  }
+
+  update(id) {
+    this.router.navigate(['/studentUpdate', id]);
+  }
+  }
+
+

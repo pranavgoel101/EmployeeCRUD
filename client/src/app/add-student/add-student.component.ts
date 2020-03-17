@@ -46,6 +46,7 @@ export class AddStudentComponent implements OnInit {
 
       console.log(response);
       alert('Registration Successful');
+      this.router.navigate(['/homepage'])
     }, (error) => {
 
       console.log(error);
