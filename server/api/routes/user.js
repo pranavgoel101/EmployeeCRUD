@@ -9,4 +9,7 @@ router.post("/login", UserController.user_login);
 
 router.post("/forgetpassword", UserController.user_forgetpassword);
 
+router.post("/homepage", UserController.user_homepage);
+
+
 module.exports = router;

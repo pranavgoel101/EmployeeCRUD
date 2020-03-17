@@ -35,7 +35,7 @@ export class LoginFormComponent implements OnInit {
 
       console.log(response);
       alert('Login Successful');
-      this.router.navigate(['/homepage'])
+      this.router.navigate(['/homepage']) ;
     }, (error) => {
 
       console.log(error);
