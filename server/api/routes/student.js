@@ -7,7 +7,7 @@ router.post("/add", StudentController.Student_signup);
 
 router.get("/displayall", StudentController.Student_display);
 
-router.delete("/delete", StudentController.Student_delete);
+router.delete("/delete/:id", StudentController.Student_delete);
 
 router.post("/update", StudentController.Student_update);
 

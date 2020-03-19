@@ -73,7 +73,13 @@ exports.Student_delete = async (req, res, next) => {
 
 exports.Student_update = async (req, res, next) => {
   
-  const studentUpdate = await Student.update({_id:req.body.id },{firstname:req.body.firstname , lastname:req.body.lastname , mobileno:req.body.mobileno ,email:req.body.email, username:req.body.username});
+  const studentUpdate = await Student.update({_id:req.body.id },{
+    fname:req.body.fname , 
+    lname:req.body.lname ,
+    phone:req.body.phone ,
+    address:req.body.address,
+    email:req.body.email, 
+    pass:req.body.pass});
 
   if(!studentUpdate) {
     return res.status(404).json({

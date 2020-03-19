@@ -34,7 +34,7 @@ export class HomePageComponent implements OnInit {
   }
 
   delete(id) {
-    this.http.delete(`http://localhost:3000/student/studentDelete/${id}`).subscribe((response: any) => {
+    this.http.delete(`http://localhost:3000/student/delete/${id}`).subscribe((response: any) => {
       alert(response.msg);
       this.router.navigate(['/homepage']);
     }, (error) => {
@@ -46,7 +46,7 @@ export class HomePageComponent implements OnInit {
   }
 
   update(id) {
-    this.router.navigate(['/studentUpdate', id]);
+    this.router.navigate(['/update-student', id]);
   }
   }
 

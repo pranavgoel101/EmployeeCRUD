@@ -11,6 +11,7 @@ import { RegistrationFormComponent } from './registration-form/registration-form
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AddStudentComponent } from './add-student/add-student.component';
+import { UpdateStudentComponent } from './update-student/update-student.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AddStudentComponent } from './add-student/add-student.component';
     ForgetPasswordComponent,
     HomePageComponent,
     AddStudentComponent,
+    UpdateStudentComponent,
   ],
   imports: [
     BrowserModule,

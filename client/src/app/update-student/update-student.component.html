@@ -1,0 +1,15 @@
+<form [formGroup]="updateStudentForm">
+  <pre>
+    <div >
+      <h1> STUDENT Update FORM</h1>
+      First Name   : <input type="text" formControlName="fname"><br>
+      Last Name    : <input type="text" formControlName="lname"><br>
+      Phone Number : <input type="tel" formControlName="phone"><br>
+      Address      : <input type="text" formControlName="address"><br>
+      Email ID     : <input type="text" formControlName="email"><br>
+      Password     : <input type="text" formControlName="pass"><br>
+      <button [disabled]=updateStudentForm.invalid (click)="update()">Update </button>
+
+    </div>
+  </pre>
+</form>
