@@ -1,3 +1,4 @@
+import { UserauthService } from './../userauth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -13,7 +14,8 @@ export class ForgetPasswordComponent implements OnInit {
   conpass = ''
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private userauthservice : UserauthService
   ) { }
 
   ngOnInit() {
@@ -29,8 +31,7 @@ export class ForgetPasswordComponent implements OnInit {
       pass: this.forgetpassword.get('pass').value,
       };
 
-    this.http.post('http://localhost:3000/user/forgetpassword', data).subscribe((response: any) => {
-
+    this.userauthservice.forgetpass(data).subscribe((response: any) => {
       console.log(response);
       alert('Forget Password Successful');
 

@@ -1,3 +1,4 @@
+import { StudentauthService } from './../studentauth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -14,7 +15,8 @@ export class AddStudentComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router : Router
+    private router: Router,
+    private studentauthservice: StudentauthService
   ) { }
   fname = '';
   lname = '';
@@ -42,8 +44,7 @@ export class AddStudentComponent implements OnInit {
     };
     console.log('data', data );
 
-    this.http.post('http://localhost:3000/student/add', data).subscribe((response: any) => {
-
+    this.studentauthservice.add(data).subscribe((response: any) => {
       console.log(response);
       alert('Registration Successful');
       this.router.navigate(['/homepage'])
@@ -51,7 +52,6 @@ export class AddStudentComponent implements OnInit {
 
       console.log(error);
       alert('Registration Failed');
-
     });
 }
 }

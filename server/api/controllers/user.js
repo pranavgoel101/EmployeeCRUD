@@ -25,7 +25,10 @@ exports.user_signup = async(req, res, next) => {
   });
 
   user.save().then((response)=> {
-    res.status(200).json({msg: response});
+    let payload ={ subject: user._id}
+    let token = jwt.sign(payload, 'secretkey')
+    res.status(200).send({token})
+    //res.status(200).json({msg: response});
   }).catch((error)=>{
     res.status(500).json({msg: error});
     });
@@ -43,9 +46,10 @@ if(!user){
   });
 }
 else{
-  return res.status(201).json({
-    msg: 'User found'
-  });
+  let payload = {subject : user._id}
+  let token = jwt.sign(payload , 'secretkey')
+  res.status(201).send({token})
+  //return res.status(201).json({msg: 'User found'});
 }
   res.status(200).json({ msg: "user_login works" })
 };

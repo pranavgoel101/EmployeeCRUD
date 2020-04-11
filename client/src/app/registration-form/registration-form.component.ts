@@ -1,7 +1,9 @@
+import { UserauthService } from './../userauth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-registration-form',
@@ -20,7 +22,8 @@ export class RegistrationFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router : Router
+    private router : Router,
+    private userauthservice : UserauthService
     ) { }
 
 
@@ -58,11 +61,12 @@ export class RegistrationFormComponent implements OnInit {
       };
       console.log('data', data );
 
-      this.http.post('http://localhost:3000/user/signup', data).subscribe((response: any) => {
-
-        console.log(response);
-        alert('Registration Successful');
-        this.router.navigate(['/login'])
+      this.userauthservice.register(data).subscribe((response: any) => {
+      localStorage.setItem('token',response.token)
+      console.log(localStorage)
+      console.log(response);
+      alert('Registration Successful');
+      this.router.navigate(['/login'])
       }, (error) => {
 
         console.log(error);

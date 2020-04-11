@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { StudentauthService } from '../studentauth.service';
 
 @Component({
   selector: 'app-home-page',
@@ -11,19 +12,20 @@ import { Router } from '@angular/router';
 export class HomePageComponent implements OnInit {
 
 
-  homepageForm: FormGroup;
+  //homepageForm: FormGroup;
   studentlist = [];
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router : Router
+    private router: Router,
+    private studentauthservice: StudentauthService
     ) { }
 
     addstudent() {
       this.router.navigate(['/add-student'])
     }
   ngOnInit() {
-    this.http.get('http://localhost:3000/student/displayall').subscribe((response: any) => {
+    this.studentauthservice.displayall().subscribe((response: any) => {
       this.studentlist = response.student;
     }, (error) => {
 

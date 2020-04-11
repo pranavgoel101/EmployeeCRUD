@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import { StudentauthService } from '../studentauth.service';
 
 @Component({
   selector: 'app-update-student',
@@ -17,12 +18,13 @@ export class UpdateStudentComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private studentauthservice: StudentauthService
   ) { }
 
   ngOnInit() {
 
-    f
+
     this.updateStudentForm = this.fb.group({
       fname: ['', Validators.required],
       lname: ['', Validators.required],
@@ -46,16 +48,15 @@ export class UpdateStudentComponent implements OnInit {
     };
     console.log('data', data );
 
-    this.http.post('http://localhost:3000/student/update', data).subscribe((response: any) => {
+    this.studentauthservice.update(data).subscribe((response: any) => {
 
       console.log(response);
       alert('Update Successful');
-      this.router.navigate(['/homepage'])
+      this.router.navigate(['/homepage']);
     }, (error) => {
 
       console.log(error);
       alert('Update Failed');
-
     });
 
   }
