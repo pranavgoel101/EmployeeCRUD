@@ -18,4 +18,10 @@ export class UserauthService {
   forgetpass(data) {
     return this.http.post(this.url + '/forgetpassword', data) ;
   }
+  loggedIn() {
+    return !!localStorage.getItem('token')
+  }
+  getToken() {
+    return localStorage.getItem('token')
+  }
 }

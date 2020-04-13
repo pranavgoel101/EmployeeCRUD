@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { StudentauthService } from '../studentauth.service';
 
@@ -40,7 +40,11 @@ export class HomePageComponent implements OnInit {
       alert(response.msg);
       this.router.navigate(['/homepage']);
     }, (error) => {
-
+      if (error instanceof HttpErrorResponse){
+        if(error.status === 401){
+          this.router.navigate(['/login'])
+        }
+      }
       console.log(error);
       alert(error.error.msg);
 

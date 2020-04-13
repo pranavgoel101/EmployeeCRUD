@@ -1,3 +1,7 @@
+import { TokenInterceptorService } from './token-interceptor.service';
+import { AuthGuard } from './auth.guard';
+import { StudentauthService } from './studentauth.service';
+import { UserauthService } from './userauth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,12 +10,14 @@ import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule , HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { UpdateStudentComponent } from './update-student/update-student.component';
+
+
 
 
 @NgModule({
@@ -31,7 +37,12 @@ import { UpdateStudentComponent } from './update-student/update-student.componen
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UserauthService,StudentauthService,AuthGuard,
+    {
+     provide : HTTP_INTERCEPTORS,
+     useClass : TokenInterceptorService,
+     multi : true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

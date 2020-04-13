@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginFormComponent},
   { path: 'registration', component: RegistrationFormComponent},
   { path: 'forgetpassword' , component : ForgetPasswordComponent},
-  { path: 'homepage', component : HomePageComponent},
+  { path: 'homepage', component : HomePageComponent, canActivate : [AuthGuard]},
   { path: 'add-student', component : AddStudentComponent},
   { path: 'update-student/:id', component : UpdateStudentComponent}
 

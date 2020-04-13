@@ -49,7 +49,6 @@ exports.Student_display = async (req, res, next) => {
   }
 };
 
-
 exports.Student_delete = async (req, res, next) => {
   res.status(200).json({ msg: "user_delete works" })
   
@@ -67,8 +66,6 @@ exports.Student_delete = async (req, res, next) => {
         msg: "Student deleted"
       });
     }
-  
-
 };
 
 exports.Student_update = async (req, res, next) => {
