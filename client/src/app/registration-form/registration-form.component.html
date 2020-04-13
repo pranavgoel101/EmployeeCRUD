@@ -8,7 +8,7 @@
       Address      : <input type="text" formControlName="address"><br>
       Email ID     : <input type="text" formControlName="email"><br>
       Password     : <input type="text" formControlName="pass"><br>
-      <button [disabled]=registrationForm.invalid (click)="registration()">Register </button>
+      <button *ngIf="!userauthservice.loggedIn()" [disabled]=registrationForm.invalid (click)="registration()">Register </button>
       <a href [routerLink]="['/login']">Already have account? Login</a><br>
 
     </div>

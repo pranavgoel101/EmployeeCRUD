@@ -1,6 +1,6 @@
 import { UserauthService } from './../userauth.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, EmailValidator } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { TokenInterceptorService } from './../token-interceptor.service';
@@ -23,7 +23,7 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      email: ['', Validators.required,Validators.email],
+      email: ['', Validators.required],
       pass: ['', Validators.required]
     });
   }

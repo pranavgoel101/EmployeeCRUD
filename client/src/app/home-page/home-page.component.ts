@@ -1,8 +1,10 @@
+import { UserauthService } from './../userauth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { StudentauthService } from '../studentauth.service';
+
 
 @Component({
   selector: 'app-home-page',
@@ -18,7 +20,8 @@ export class HomePageComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private studentauthservice: StudentauthService
+    private studentauthservice: StudentauthService,
+    private userauthservice: UserauthService
     ) { }
 
     addstudent() {
